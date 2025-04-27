@@ -1,1 +1,3 @@
-// place files you want to import through the `$lib` alias in this folder.
+import Root from './root.svelte'
+import Label from './label.svelte'
+export const Button = {Root, Label} 

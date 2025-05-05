@@ -19,6 +19,18 @@
 	/*src: url("/CalSans-SemiBold.woff2") format("woff2");*/
 }
  
+[data-accordion-root]:hover {
+	background-color: blue;
+}
+
+[data-accordion-header]:hover {
+	background-color: green;
+}
+
+[data-accordion-trigger]:hover{
+	background-color: magenta;
+}
+
 :root {
 	/* Colors */
 	--background: hsl(0 0% 100%);
@@ -310,3 +322,4 @@
 		@apply hover:text-foreground/80 focus-visible:ring-foreground focus-visible:ring-offset-background rounded-xs focus-visible:outline-hidden inline-flex items-center gap-1 font-medium underline underline-offset-4 focus-visible:ring-2 focus-visible:ring-offset-2;
 	}
 }
+

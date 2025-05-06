@@ -3,20 +3,19 @@
 </p>
 
 <div class='wrapp'>
-
-<!--div id="modal" - это целевой фрагмент тега a.
-К нему будет применен стиль с селектором #modal:target
-в случае, если URL стрницы содержать #modal-->
-<div id="modal" class="overlay">
-	<a class="cancel" href="#"></a>
-	<div class="card">
-		<h2>Это заголовок</h2>
-		<div class="content">
-			<p>Это контент</p>
-            <p><input type="text"></p>
+	<!--div id="modal" - это целевой фрагмент тега a.
+	К нему будет применен стиль с селектором #modal:target
+	в случае, если URL стрницы содержать #modal-->
+	<div id="modal" class="overlay">
+		<a class="cancel" href="#"></a>
+		<div class="card">
+			<h2>Это заголовок</h2>
+			<div class="content">
+				<p>Это контент</p>
+				<p><input type="text"></p>
+			</div>
 		</div>
 	</div>
-</div>
 </div>
 
 <style>
@@ -65,7 +64,6 @@
     абсолютного позиционирование */
     .card{
         position:relative; /*!!!*/
-		z-index: 99;
     }
 
 </style>

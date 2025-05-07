@@ -1,69 +1,79 @@
-<p>
-	<a class="button" href="#modal">Кликни</a>
-</p>
+<script lang="ts">
+	import { Button,Accordion } from 'bits-ui';
+	import LockKeyOpen from 'phosphor-svelte/lib/CheckFat';
+	import { twMerge } from 'tailwind-merge';
+	import { Root } from '../ui/button';
 
-<div class='wrapp'>
-	<!--div id="modal" - это целевой фрагмент тега a.
-	К нему будет применен стиль с селектором #modal:target
-	в случае, если URL стрницы содержать #modal-->
-	<div id="modal" class="overlay">
-		<a class="cancel" href="#"></a>
-		<div class="card">
-			<h2>Это заголовок</h2>
-			<div class="content">
-				<p>Это контент</p>
-				<p><input type="text"></p>
-			</div>
-		</div>
-	</div>
-</div>
+	let btn = $state<HTMLButtonElement>();
+	let ttt = $state<string>('zzz');
+
+	$effect(() => {
+		console.log(btn);
+		console.log('effect', btn?.dataset?.buttonRoot);
+	});
+	const classes = [
+		['w-30', 'inline-flex', 'bg-amber-500'],
+		['w-32 bg-blue-500'],
+		['w-40 bg-red-500']
+	];
+	let idx = $state(0);
+
+	let cls1 = twMerge('px-6 py-1 bg-green hover:bg-blue-600', 'p-3 bg-[#B91C1C]');
+	let cls2 = twMerge('px-2 py-6 bg-blue hover:bg-blue-300', 'p-3 bg-blue-500');
+	const clss = { first: cls1, second: cls2 };
+</script>
+
+<!-- class="w-36 rounded-input bg-blue-500 text-background shadow-mini hover:bg-dark/95 inline-flex
+h-12 items-center justify-around px-[21px] text-[15px]
+font-semibold active:scale-[0.98] active:transition-all" -->
+
+<!-- class={classes[idx]} -->
+
+<form method="post">
+	<input bind:value={idx} type="number" max="3" min="0" />
+	<input bind:value={ttt} />
+
+		<Button.Root
+			class={clss.first}
+			onclick={() => {
+				console.log(btn);
+				btn?.classList.add('bg-amber-500');
+				btn?.classList.remove('bg-blue-500');
+			}}
+			bind:ref={btn}
+			disabled={false}
+			id={(() => btn?.dataset.buttonRoot)()}
+			type="button"
+			data-button-root={ttt}
+			data-button-test="777"
+		>
+			{@render blabel(ttt)}
+		</Button.Root>
+
+</form>
+
+{#snippet blabel(val:string)}
+	{#if val == '111'}
+		<span>Btn</span>
+        <LockKeyOpen size=28>
+            <animate
+            attributeName="opacity"
+            values="0;1;0"
+            dur="1s"
+            repeatCount="indefinite"
+          >
+        </LockKeyOpen>
+	{:else}
+		Save
+	{/if}
+{/snippet}
 
 <style>
-	/* Перекроем окно. Сначала перекрытие не видно.
-    Содержание д.б. отцентрировано */
-	.overlay {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-
-        align-content: center;
-        justify-items: center;   
-
-		visibility: hidden;
-		opacity: 0;
-
-        background: rgba(0, 0, 0, 0.5);
-		transition: opacity 500ms;
-
+	.txt {
+		color: blue;
 	}
 
-	/* класс применяется, если URL-страницы совпадет со значением
-       атрибута id какого-либо тега  */
-	#modal:target {
-		visibility: visible;
-		opacity: 1;
+	:global([data-button-root='111']) {
+		background: rgb(39, 39, 183);
 	}
-
-	/* Максимально 
-    увеличим пространство, занимаемое тегом а. В рез-те
-    клик по этому тегу всегда будет срабатывать и URL будет
-    меняться с #modal на #, что приведет к срабатыванию
-    класса .overlay и перекрытие опять будет невидимо */
-	.overlay .cancel {
-		position: absolute;
-        top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0; 
-		cursor: default;
-        background: rgba(0, 0, 255, 0.251);
-	}
-    /* содержание должно быть выведено из 
-    абсолютного позиционирование */
-    .card{
-        position:relative; /*!!!*/
-    }
-
 </style>

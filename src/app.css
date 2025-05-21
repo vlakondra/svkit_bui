@@ -1,37 +1,28 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+@plugin "tailwindcss-animate";
 
 /* @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
   */
 
-@plugin "tailwindcss-animate";
-
-
+ 
 @custom-variant dark (&:is(.dark *));
  
-@font-face {
-	font-family: sans-serif;
+/* @font-face {
+	font-family: "sans-serif";
 	font-style: normal;
 	font-weight: 600;
 	font-display: swap;
-	/*src: url("/CalSans-SemiBold.woff2") format("woff2");*/
-}
+	 src: url("/CalSans-SemiBold.woff2") format("woff2"); 
+} */
  
-[data-accordion-root]:hover {
-	background-color: blue;
-}
-
-[data-accordion-header]:hover {
-	background-color: green;
-}
-
-[data-accordion-trigger]:hover{
-	background-color: magenta;
-}
-
 :root {
+		background:green;
+		interpolate-size:allow-keywords !important;
+
+
 	/* Colors */
 	--background: hsl(0 0% 100%);
 	--background-alt: hsl(0 0% 100%);
@@ -322,4 +313,3 @@
 		@apply hover:text-foreground/80 focus-visible:ring-foreground focus-visible:ring-offset-background rounded-xs focus-visible:outline-hidden inline-flex items-center gap-1 font-medium underline underline-offset-4 focus-visible:ring-2 focus-visible:ring-offset-2;
 	}
 }
-

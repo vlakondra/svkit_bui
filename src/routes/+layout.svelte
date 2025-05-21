@@ -1,19 +1,8 @@
 <script lang="ts">
-	import '../app.css';
-	// import HtmlDialog from '$lib/components/HtmlDialog.svelte';
+	import type { Snippet } from 'svelte';
+	import type { LayoutData } from './$types';
 
-	let { children } = $props();
-	
+	let { data, children }: { data: LayoutData; children: Snippet } = $props();
 </script>
 
-
-
 {@render children()}
-
-<!-- <HtmlDialog bind:dial={htmldial}>
-	<p>
-		<button onclick={() => htmldial?.close()}> Закрыть </button>
-	</p>
-	<hr />
-	<p>Child-контент </p>
-</HtmlDialog>  -->

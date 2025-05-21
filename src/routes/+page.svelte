@@ -9,7 +9,7 @@
 <form method="POST">
 		<label>
 			add a todo:
-			<div style="border:1px solid silver;width:200px">
+			<div style="display:flex;border:1px solid silver;width:200px">
 				<input style="border:none;width:180px"
 				name="description"
 				autocomplete="off"

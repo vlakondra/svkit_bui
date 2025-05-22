@@ -2,8 +2,9 @@
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
-	import LockKeyOpen from 'phosphor-svelte/lib/Trash';
+	import Trash from 'phosphor-svelte/lib/Trash';
 </script>
+
 
 <div>
 <form method="POST">
@@ -13,7 +14,7 @@
 				<input style="border:none;width:180px"
 				name="description"
 				autocomplete="off"
-			/><LockKeyOpen size={16}/></div>
+			/><Trash size={16}/></div>
 		</label>
 	</form>
 
